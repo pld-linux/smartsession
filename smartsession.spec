@@ -1,6 +1,6 @@
-# $Revision: 1.2 $
-Summary:	Utilities for GemPlus(R) smartcard readers
-Summary(pl):	Narzêdzia do czytników kart GemPlus(R)
+# $Revision: 1.3 $
+Summary:	Utilities for smartcard readers
+Summary(pl):	Narzêdzia do czytników kart 
 Name:		smartsession
 Version:	1.9.11
 Release:	1
@@ -17,6 +17,7 @@ BuildRequires:	pcsc-lite-devel
 See attached copyright file !
 Tools for managing & creating smardcard. 
 (for autorization w/ pam or storing GPG/ssl keys in sim-a-like cards)
+Sorry but we cannot use name of manufacturer to advertise this package.
 
 %description -l pl
 
@@ -24,6 +25,8 @@ Zapoznaj siê z do³±czonym plikiem copyright.
 Zabawki do zarz±dzania i formatowania smardcard.
 (do autoryzacji z pamem lub przechowywania kluczy GPG/ssl w przero¶niêtych
 kartach a'la SIM)
+Przykro nam ale nie mo¿emy u¿ywaæ nazwy producenta czytników w celu reklamy 
+tego produktu.
 
 %package -n smartsession-devel
 Summary:    smartsession header files
