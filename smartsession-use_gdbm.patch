@@ -1,0 +1,11 @@
+--- ../../BUILD/smartsession/src/Makefile	Tue Mar 12 10:56:53 2002
++++ src/Makefile	Mon Oct 14 11:06:19 2002
+@@ -3,7 +3,7 @@
+ CC       = gcc
+ FLAGS    = -O2 -Wall -fPIC
+ INCLUDE  = -I../Includes
+-LDLIBS   = -ldbm -lpcsclite -lpthread -lgmp -lnsl -lpam -lpam_misc
++LDLIBS   = -lgdbm -lpcsclite -lpthread -lgmp -lnsl -lpam -lpam_misc
+ 
+ SMARTSESSION_INSTALL_DIR = /etc/smartsession/
+ SMARTSESSION_DIR = \"$(SMARTSESSION_INSTALL_DIR)\"
