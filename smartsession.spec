@@ -14,7 +14,7 @@ BuildRequires:	gmp-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	pam-devel
 BuildRequires:	pcsc-lite-devel
-Obsoletes:	%{name}-tools
+Obsoletes:	smartsession-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,7 +30,7 @@ przechowywanie kodów dostêpu do szyfrowanych systemów plików).
 Summary:	X Smart Session tool
 Summary(pl):	Narzêdzie Smart Session pod X
 Group:		X11/Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description xsst
 X Smart Session tool: manages smartsession smartcard and pam_smartcard
@@ -44,6 +44,7 @@ modu³em PAM pam_smartcard.
 Summary:	smartsession PAM autorization module
 Summary(pl):	Modu³ autoryzacji smartsession dla PAM
 Group:		Libraries
+Obsoletes:	smartsession-pam
 
 %description -n pam-pam_smartcard
 You need this in order to use cards insted of passwords.
