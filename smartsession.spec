@@ -1,89 +1,82 @@
-# $Revision: 1.3 $
 Summary:	Utilities for smartcard readers
 Summary(pl):	Narzêdzia do czytników kart 
 Name:		smartsession
 Version:	1.9.11
 Release:	1
 License:	Consult w/ www.gemplus.com and file 'copyright'
-Group:		Utilities 
+Group:		Applications
 Source0:	%{name}_%{version}.tar.gz
 Patch0:		%{name}-use_gdbm.patch
-URL:		http://www.gemplus.com/techno/smartsession
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+URL:		http://www.gemplus.com/techno/smartsession/
 BuildRequires:	pcsc-lite-devel
-#Requires:	pcsc-lite
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-See attached copyright file !
-Tools for managing & creating smardcard. 
-(for autorization w/ pam or storing GPG/ssl keys in sim-a-like cards)
-Sorry but we cannot use name of manufacturer to advertise this package.
+Tools for managing & creating smardcards (for autorization w/ PAM or
+storing GPG/SSL keys in sim-a-like cards).
+
+Sorry but we cannot use name of manufacturer to advertise this
+package. See attached copyright file!
 
 %description -l pl
+Zabawki do zarz±dzania i formatowania kart smardcard (do autoryzacji
+przy u¿yciu PAM lub przechowywania kluczy GPG/SSL w przero¶niêtych
+kartach a'la SIM).
 
-Zapoznaj siê z do³±czonym plikiem copyright.
-Zabawki do zarz±dzania i formatowania smardcard.
-(do autoryzacji z pamem lub przechowywania kluczy GPG/ssl w przero¶niêtych
-kartach a'la SIM)
-Przykro nam ale nie mo¿emy u¿ywaæ nazwy producenta czytników w celu reklamy 
-tego produktu.
+Niestety nie mo¿emy u¿ywaæ nazwy producenta czytników w celu reklamy
+tego produktu. Nale¿y zapoznaæ siê z do³±czonym plikiem copyright.
 
-%package -n smartsession-devel
-Summary:    smartsession header files
-Summary(pl):    nag³ówki smartsession
-Group:      Libraries
+%package devel
+Summary:	smartsession header files
+Summary(pl):	Pliki nag³ówkowe smartsession
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
 
-%description -n smartsession-devel
-smartsession header files
+%description devel
+smartsession header files.
 
-%description -n smartsession-devel -l pl
-nag³ówki smartsession 
+%description devel -l pl
+Pliki nag³ówkowe smartsession.
 
-%package -n smartsession-tools
+%package tools
 Summary:	Tools
-Summary(pl):	fajowe zabawki
-Group:		Applications/Utilities
-Requires: smartsession
+Summary(pl):	Narzêdzia
+Group:		Applications
+Requires:	%{name} = %{version}
 
-%description -n smartsession-tools
+%description tools
 Simple tools for comunicating w/ smartcard reader.
 
-%description -n smartsession-tools -l pl
-Proste narzêdzia do komunikacji z czytnikiem kart chip.
-
+%description tools -l pl
+Proste narzêdzia do komunikacji z czytnikiem kart chipowych.
 
 %package -n smartsession-pam
-Summary:    smartsession pam autorization module
-Summary(pl):    modu³ smartsession dla pam
-Group:      Libraries 
-# ???
+Summary:	smartsession PAM autorization module
+Summary(pl):	Modu³ autoryzacji smartsession dla PAM
+Group:		Libraries 
 
-%description -n smartsession-pam
+%description pam
 You need this in order to use cards insted of passwords.
 
 %description -n smartsession-pam -l pl
-Potrzebujesz tego aby nie u¿ywaæ hase³ tylko logowaæ siê wk³adaj±c kartê.
+Modu³ ten jest potrzebny, aby logowaæ siê wk³adaj±c kartê zamiast
+wpisywania has³a.
 
 %prep
 %setup -qn smartsession
 %patch0 -p0
 
 %build
-
-cd src
-%{__make}
-cd ../man
-gzip -9nf *.[0-9]
+%{__make} -C src
 
 %install
 install -d $RPM_BUILD_ROOT{%{_libdir},%{_mandir}/man{1,5,8},%{_sbindir},\
-%{_bindir},%{_examplesdir}/%{name},/usr/include,\
-%{_sysconfdir}/pam.d}
+%{_bindir},%{_examplesdir}/%{name},%{_includedir},/lib/security}
 
 install src/Cfs_SC/{cmkdir,cattach,cdetach,crescue}_SC $RPM_BUILD_ROOT%{_bindir}
-install src/Graphic/xsst  $RPM_BUILD_ROOT%{_sbindir}
-install src/Locker/{autolock,smartlocker}  $RPM_BUILD_ROOT%{_sbindir}
-install src/Pam_Modules/pam_{smartcard,cfs_SC}.so $RPM_BUILD_ROOT/etc/pam.d
+install src/Graphic/xsst $RPM_BUILD_ROOT%{_sbindir}
+install src/Locker/{autolock,smartlocker} $RPM_BUILD_ROOT%{_sbindir}
+install src/Pam_Modules/pam_{smartcard,cfs_SC}.so $RPM_BUILD_ROOT/lib/security
 install src/Tools/{sst,chpin,autolock_ctrl} $RPM_BUILD_ROOT%{_sbindir}
 #smartsession/man/xsst.8
 #smartsession/man/sst.8
@@ -97,19 +90,16 @@ install src/Tools/{sst,chpin,autolock_ctrl} $RPM_BUILD_ROOT%{_sbindir}
 #smartsession/man/cfs_SC.1
 #smartsession/man/chpin.1
 #smartsession/man/smartlocker.1
-install man/*.8.gz $RPM_BUILD_ROOT%{_mandir}/man8
-install man/*.5.gz $RPM_BUILD_ROOT%{_mandir}/man5
-install man/*.1.gz $RPM_BUILD_ROOT%{_mandir}/man1
+install man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
+install man/*.5 $RPM_BUILD_ROOT%{_mandir}/man5
+install man/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install Misc/{Makefile.patch,smartlocker_pam_config,README,erase_gpk8k,\
 gdm.patch,get_name_in_card.sh,script_test} \
 	$RPM_BUILD_ROOT%{_examplesdir}/%{name}
-#install src/*.h $RPM_BUILD_ROOT/usr/include
+#install src/*.h $RPM_BUILD_ROOT%{_includedir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post -n smartsession-devel
-/sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -120,20 +110,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man8/*
 %{_examplesdir}/%{name}
 
-%files -n smartsession-devel
+%files devel
 %defattr(644,root,root,755)
-#/usr/include/*
+#%{_includedir}/*
 
-%files -n smartsession-tools
+%files tools
 %defattr(644,root,root,755)
-%{_sbindir}/*
-%{_bindir}/cattach_SC
-%{_bindir}/cdetach_SC
-%{_bindir}/cmkdir_SC
-%{_bindir}/crescue_SC
-
+%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_bindir}/cattach_SC
+%attr(755,root,root) %{_bindir}/cdetach_SC
+%attr(755,root,root) %{_bindir}/cmkdir_SC
+%attr(755,root,root) %{_bindir}/crescue_SC
+# huh, second copy???
 %{_mandir}/man1/*
 
 %files -n smartsession-pam
-/etc/pam.d/pam_cfs_SC.so
-/etc/pam.d/pam_smartcard.so
+%defattr(644,root,root,755)
+%attr(755,root,root) /lib/security/pam_cfs_SC.so
+%attr(755,root,root) /lib/security/pam_smartcard.so
