@@ -1,4 +1,4 @@
-# $Revision: 1.1 $
+# $Revision: 1.2 $
 Summary:	Utilities for GemPlus(R) smartcard readers
 Summary(pl):	Narzêdzia do czytników kart GemPlus(R)
 Name:		smartsession
@@ -10,16 +10,20 @@ Source0:	%{name}_%{version}.tar.gz
 Patch0:		%{name}-use_gdbm.patch
 URL:		http://www.gemplus.com/techno/smartsession
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-#BuildRequires:	pcsc-lite-devel
-Requires:	pcsc-lite
+BuildRequires:	pcsc-lite-devel
+#Requires:	pcsc-lite
 
 %description
-
 See attached copyright file !
+Tools for managing & creating smardcard. 
+(for autorization w/ pam or storing GPG/ssl keys in sim-a-like cards)
 
 %description -l pl
 
 Zapoznaj siê z do³±czonym plikiem copyright.
+Zabawki do zarz±dzania i formatowania smardcard.
+(do autoryzacji z pamem lub przechowywania kluczy GPG/ssl w przero¶niêtych
+kartach a'la SIM)
 
 %package -n smartsession-devel
 Summary:    smartsession header files
@@ -43,6 +47,19 @@ Simple tools for comunicating w/ smartcard reader.
 
 %description -n smartsession-tools -l pl
 Proste narzêdzia do komunikacji z czytnikiem kart chip.
+
+
+%package -n smartsession-pam
+Summary:    smartsession pam autorization module
+Summary(pl):    modu³ smartsession dla pam
+Group:      Libraries 
+# ???
+
+%description -n smartsession-pam
+You need this in order to use cards insted of passwords.
+
+%description -n smartsession-pam -l pl
+Potrzebujesz tego aby nie u¿ywaæ hase³ tylko logowaæ siê wk³adaj±c kartê.
 
 %prep
 %setup -qn smartsession
@@ -107,4 +124,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -n smartsession-tools
 %defattr(644,root,root,755)
 %{_sbindir}/*
+%{_bindir}/cattach_SC
+%{_bindir}/cdetach_SC
+%{_bindir}/cmkdir_SC
+%{_bindir}/crescue_SC
+
 %{_mandir}/man1/*
+
+%files -n smartsession-pam
+/etc/pam.d/pam_cfs_SC.so
+/etc/pam.d/pam_smartcard.so
