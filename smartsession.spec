@@ -104,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc INSTALL README copyright ChangeLog MANIFEST TODO
-#%{_libdir}/*
+#%%{_libdir}/*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-#%{_includedir}/*
+#%%{_includedir}/*
 
 %files tools
 %defattr(644,root,root,755)
