@@ -30,7 +30,7 @@ przechowywanie kodów dostêpu do szyfrowanych systemów plików).
 Summary:	X Smart Session tool
 Summary(pl):	Narzêdzie Smart Session pod X
 Group:		X11/Applications
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description xsst
 X Smart Session tool: manages smartsession smartcard and pam_smartcard
@@ -63,12 +63,12 @@ wpisywania has³a.
 
 %install
 install -d $RPM_BUILD_ROOT{%{_mandir}/man{1,5,8},%{_sbindir},%{_bindir}} \
-	$RPM_BUILD_ROOT{%{_examplesdir}/%{name},/lib/security}
+	$RPM_BUILD_ROOT{%{_examplesdir}/%{name},/%{_lib}/security}
 
 install src/Cfs_SC/{cmkdir,cattach,cdetach,crescue}_SC $RPM_BUILD_ROOT%{_bindir}
 install src/Graphic/xsst $RPM_BUILD_ROOT%{_sbindir}
 install src/Locker/{autolock,smartlocker} $RPM_BUILD_ROOT%{_sbindir}
-install src/Pam_Modules/pam_{smartcard,cfs_SC}.so $RPM_BUILD_ROOT/lib/security
+install src/Pam_Modules/pam_{smartcard,cfs_SC}.so $RPM_BUILD_ROOT/%{_lib}/security
 install src/Tools/{sst,chpin,autolock_ctrl} $RPM_BUILD_ROOT%{_sbindir}
 
 install man/*.8 $RPM_BUILD_ROOT%{_mandir}/man8
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n pam-pam_smartcard
 %defattr(644,root,root,755)
-%attr(755,root,root) /lib/security/pam_cfs_SC.so
-%attr(755,root,root) /lib/security/pam_smartcard.so
+%attr(755,root,root) /%{_lib}/security/pam_cfs_SC.so
+%attr(755,root,root) /%{_lib}/security/pam_smartcard.so
 %{_mandir}/man5/pam_cfs_SC.5*
 %{_mandir}/man5/pam_smartcard.5*
