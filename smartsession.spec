@@ -6,6 +6,7 @@ Release:	1
 License:	BSD-like + restricted vendor's name usage (see copyright file)
 Group:		Applications
 Source0:	http://www.gemplus.com/techno/smartsession/download/%{name}_%{version}.tar.gz
+# Source0-md5:	08a1b1155eae524dfe48c465b93c6af4
 Patch0:		%{name}-use_gdbm.patch
 URL:		http://www.gemplus.com/techno/smartsession/
 BuildRequires:	gmp-devel
