@@ -3,6 +3,7 @@ Summary(pl):	Narzêdzia do czytników kart procesorowych
 Name:		smartsession
 Version:	1.9.11
 Release:	1
+Epoch:		1
 License:	BSD-like + restricted vendor's name usage (see copyright file)
 Group:		Applications
 Source0:	http://www.gemplus.com/techno/smartsession/download/%{name}_%{version}.tar.gz
@@ -39,15 +40,15 @@ PAM module.
 Narzêdzie Smart Session pod X - zarz±dzaj±ce kartami procesorowymi i
 modu³em PAM pam_smartcard.
 
-%package pam
+%package -n pam-pam_smartcard
 Summary:	smartsession PAM autorization module
 Summary(pl):	Modu³ autoryzacji smartsession dla PAM
 Group:		Libraries
 
-%description pam
+%description -n pam-pam_smartcard
 You need this in order to use cards insted of passwords.
 
-%description pam -l pl
+%description -n pam-pam_smartcard -l pl
 Modu³ ten jest potrzebny, aby logowaæ siê wk³adaj±c kartê zamiast
 wpisywania has³a.
 
@@ -108,7 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/xsst
 %{_mandir}/man8/xsst.8*
 
-%files pam
+%files -n pam-pam_smartcard
 %defattr(644,root,root,755)
 %attr(755,root,root) /lib/security/pam_cfs_SC.so
 %attr(755,root,root) /lib/security/pam_smartcard.so
