@@ -8,6 +8,7 @@ Group:		Applications
 Source0:	http://www.gemplus.com/techno/smartsession/download/%{name}_%{version}.tar.gz
 Patch0:		%{name}-use_gdbm.patch
 URL:		http://www.gemplus.com/techno/smartsession/
+BuildRequires:	gmp-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	pam-devel
 BuildRequires:	pcsc-lite-devel
