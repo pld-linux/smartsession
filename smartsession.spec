@@ -1,5 +1,5 @@
 Summary:	Utilities for smartcard readers
-Summary(pl):	Narzêdzia do czytników kart 
+Summary(pl):	Narzêdzia do czytników kart
 Name:		smartsession
 Version:	1.9.11
 Release:	1
@@ -53,7 +53,7 @@ Proste narzêdzia do komunikacji z czytnikiem kart chipowych.
 %package -n smartsession-pam
 Summary:	smartsession PAM autorization module
 Summary(pl):	Modu³ autoryzacji smartsession dla PAM
-Group:		Libraries 
+Group:		Libraries
 
 %description pam
 You need this in order to use cards insted of passwords.
@@ -103,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc INSTALL README copyright ChangeLog MANIFEST TODO 
+%doc INSTALL README copyright ChangeLog MANIFEST TODO
 #%{_libdir}/*
 %{_mandir}/man1/*
 %{_mandir}/man5/*
