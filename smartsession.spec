@@ -1,5 +1,5 @@
 Summary:	Utilities for smartcard readers
-Summary(pl.UTF-8):   Narzędzia do czytników kart procesorowych
+Summary(pl.UTF-8):	Narzędzia do czytników kart procesorowych
 Name:		smartsession
 Version:	1.9.11
 Release:	1
@@ -28,7 +28,7 @@ przechowywanie kodów dostępu do szyfrowanych systemów plików).
 
 %package xsst
 Summary:	X Smart Session tool
-Summary(pl.UTF-8):   Narzędzie Smart Session pod X
+Summary(pl.UTF-8):	Narzędzie Smart Session pod X
 Group:		X11/Applications
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -42,7 +42,7 @@ modułem PAM pam_smartcard.
 
 %package -n pam-pam_smartcard
 Summary:	smartsession PAM autorization module
-Summary(pl.UTF-8):   Moduł autoryzacji smartsession dla PAM
+Summary(pl.UTF-8):	Moduł autoryzacji smartsession dla PAM
 Group:		Libraries
 Obsoletes:	smartsession-pam
 
