@@ -1,5 +1,5 @@
 Summary:	Utilities for smartcard readers
-Summary(pl):	Narzêdzia do czytników kart procesorowych
+Summary(pl.UTF-8):   NarzÄ™dzia do czytnikÃ³w kart procesorowych
 Name:		smartsession
 Version:	1.9.11
 Release:	1
@@ -21,14 +21,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 SmartSession is a set of binaries and modules able to secure a Linux
 session using smartcards (authenticate, store CFS secret passphrase).
 
-%description -l pl
-SmartSession to zestaw programów i modu³ów umo¿liwiaj±cych ochronê
-sesji z Linuksem przy u¿yciu kart procesorowych (uwierzytelnianie,
-przechowywanie kodów dostêpu do szyfrowanych systemów plików).
+%description -l pl.UTF-8
+SmartSession to zestaw programÃ³w i moduÅ‚Ã³w umoÅ¼liwiajÄ…cych ochronÄ™
+sesji z Linuksem przy uÅ¼yciu kart procesorowych (uwierzytelnianie,
+przechowywanie kodÃ³w dostÄ™pu do szyfrowanych systemÃ³w plikÃ³w).
 
 %package xsst
 Summary:	X Smart Session tool
-Summary(pl):	Narzêdzie Smart Session pod X
+Summary(pl.UTF-8):   NarzÄ™dzie Smart Session pod X
 Group:		X11/Applications
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -36,22 +36,22 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 X Smart Session tool: manages smartsession smartcard and pam_smartcard
 PAM module.
 
-%description xsst -l pl
-Narzêdzie Smart Session pod X - zarz±dzaj±ce kartami procesorowymi i
-modu³em PAM pam_smartcard.
+%description xsst -l pl.UTF-8
+NarzÄ™dzie Smart Session pod X - zarzÄ…dzajÄ…ce kartami procesorowymi i
+moduÅ‚em PAM pam_smartcard.
 
 %package -n pam-pam_smartcard
 Summary:	smartsession PAM autorization module
-Summary(pl):	Modu³ autoryzacji smartsession dla PAM
+Summary(pl.UTF-8):   ModuÅ‚ autoryzacji smartsession dla PAM
 Group:		Libraries
 Obsoletes:	smartsession-pam
 
 %description -n pam-pam_smartcard
 You need this in order to use cards insted of passwords.
 
-%description -n pam-pam_smartcard -l pl
-Modu³ ten jest potrzebny, aby logowaæ siê wk³adaj±c kartê zamiast
-wpisywania has³a.
+%description -n pam-pam_smartcard -l pl.UTF-8
+ModuÅ‚ ten jest potrzebny, aby logowaÄ‡ siÄ™ wkÅ‚adajÄ…c kartÄ™ zamiast
+wpisywania hasÅ‚a.
 
 %prep
 %setup -qn smartsession
